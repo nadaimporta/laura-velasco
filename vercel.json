@@ -1,3 +1,5 @@
 {
-  "root": "web"
+  "outputDirectory": "web",
+  "buildCommand": null,
+  "installCommand": null
 }
