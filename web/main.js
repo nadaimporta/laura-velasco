@@ -181,3 +181,22 @@ document.querySelectorAll('.press-item, .expo-item, .about-grid').forEach(el => 
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
+
+/* ── Obra disponible hover image ──────────────────────────── */
+const hoverImg = document.createElement('img');
+hoverImg.className = 'disponible-hover-img';
+document.body.appendChild(hoverImg);
+
+document.querySelectorAll('.disponible-item[data-img]').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    hoverImg.src = item.dataset.img;
+    hoverImg.classList.add('visible');
+  });
+  item.addEventListener('mousemove', (e) => {
+    hoverImg.style.left = (e.clientX + 24) + 'px';
+    hoverImg.style.top = Math.min(e.clientY - 130, window.innerHeight - 280) + 'px';
+  });
+  item.addEventListener('mouseleave', () => {
+    hoverImg.classList.remove('visible');
+  });
+});
