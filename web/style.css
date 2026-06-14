@@ -210,7 +210,7 @@ ul { list-style: none; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.9) brightness(0.85);
+  filter: brightness(0.9);
 }
 
 .hero-text {
@@ -239,6 +239,19 @@ ul { list-style: none; }
   letter-spacing: .14em;
   text-transform: uppercase;
   color: rgba(247, 243, 237, 0.4);
+}
+
+.hero-obra-title {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: rgba(247,243,237,0.75);
+  text-shadow: 0 1px 8px rgba(28,25,22,0.3);
+  pointer-events: none;
 }
 
 .hero-dots {
@@ -362,7 +375,7 @@ ul { list-style: none; }
 .about-bio--closing {
   color: var(--ink-soft);
   font-style: italic;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .about-meta {
@@ -714,13 +727,15 @@ ul { list-style: none; }
   .menu-btn { display: flex; }
 
   .hero-text { bottom: 48px; padding: 0 24px; }
+  .hero-tagline { font-size: 32px; }
+  .hero-location { font-size: 13px; }
   .menu-panel { padding: 0 32px; }
   .panel-instagram { left: 32px; }
 
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
-  .about-grid { grid-template-columns: 1fr; }
-  .about-image { position: static; aspect-ratio: 4/3; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-image { position: static; aspect-ratio: 3/4; }
 
   .expos-grid { grid-template-columns: 1fr; gap: 40px; }
 

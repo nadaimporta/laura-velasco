@@ -80,7 +80,8 @@ document.addEventListener('keydown', e => {
 
 /* ── Hero slideshow ───────────────────────────────────────── */
 const slides = Array.from(document.querySelectorAll('.hero-slide'));
-const dots   = Array.from(document.querySelectorAll('.hero-dot'));
+const dots      = Array.from(document.querySelectorAll('.hero-dot'));
+const obraTitle = document.getElementById('heroObraTitle');
 let slideIdx = 0;
 let slideTimer;
 
@@ -90,6 +91,7 @@ function goToSlide(idx) {
   slideIdx = (idx + slides.length) % slides.length;
   slides[slideIdx].classList.add('active');
   dots[slideIdx].classList.add('active');
+  if (obraTitle) obraTitle.textContent = slides[slideIdx].querySelector('img').alt;
 }
 
 function startSlideshow() {
@@ -149,6 +151,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft')  { currentIdx = (currentIdx - 1 + stripItems.length) % stripItems.length; showItem(currentIdx); }
   if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % stripItems.length; showItem(currentIdx); }
 });
+
+/* ── About image parallax ─────────────────────────────────── */
+const aboutImg = document.querySelector('.about-image img');
+if (aboutImg) {
+  window.addEventListener('scroll', () => {
+    const rect = aboutImg.closest('.about-image').getBoundingClientRect();
+    const vh = window.innerHeight;
+    const progress = (vh - rect.top) / (vh + rect.height);
+    const shift = Math.round((progress - 0.5) * 30);
+    aboutImg.style.objectPosition = `center calc(50% + ${shift}px)`;
+  }, { passive: true });
+}
 
 /* ── Fade-in on scroll ────────────────────────────────────── */
 const observer = new IntersectionObserver((entries) => {
